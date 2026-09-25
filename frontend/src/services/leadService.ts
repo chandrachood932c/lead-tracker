@@ -1,8 +1,7 @@
 import axios from "axios";
 import type {
     CreateLeadRequest,
-    Lead,
-    UpdateLeadStatusRequest
+    Lead
 } from "../types/lead";
 
 const VITE_API_URL = import.meta.env.VITE_APP_URL;
