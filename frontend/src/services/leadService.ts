@@ -14,10 +14,8 @@ interface ApiResponse<T> {
 }
 
 export const getLeads = async (search?: string) : Promise<Lead[]> => {
-    console.log('Fetching leads with search:', API_URL ); // Log the search parameter for debugging
     const response = await axios.get<ApiResponse<Lead[]>>(API_URL, { params: search ? { search } : {} });
 
-    console.log('API response:', response.data); // Log the entire response data for debugging
     return response.data.data;
 }
 
