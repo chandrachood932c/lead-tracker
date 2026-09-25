@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 require("dotenv").config();
 
 const connectDB = require('./config/db');
@@ -12,6 +13,8 @@ app.use(
     origin: process.env.FRONTEND_URL || "http://localhost:5173"
   })
 );
+
+app.use(helmet());
 app.use(express.json({ limit: "10kb" }));
 
 app.use(async (req, res, next) => {
