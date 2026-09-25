@@ -325,47 +325,74 @@ select {
   }
 }
 
-.primary-button {
-  border: 0;
-  border-radius: 7px;
-  padding: 10px 18px;
-  background: #2f7cf6;
-  color: white;
-  font-weight: 600;
-}
-
-.primary-button:hover {
-  background: #2568d8;
-}
-
-.primary-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.search-button {
-  border: 0;
-  border-radius: 7px;
-  padding: 10px 18px;
-  background: #2f7cf6;
-  color: white;
-  font-weight: 500;
-}
-
-.search-button.disabled {
-  background: grey;
-}
-
+.primary-button,
+.search-button,
 .clear-button {
   border: 0;
   border-radius: 7px;
   padding: 10px 18px;
-  background: #d52424ed;
   color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Add Lead / Primary */
+.primary-button {
+  background: #2f7cf6;
+}
+
+.primary-button:hover {
+  background: #2568d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(47, 124, 246, 0.25);
+}
+
+/* Search */
+.search-button {
+  background: #2f7cf6;
   font-weight: 500;
 }
 
+.search-button:hover {
+  background: #2568d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(47, 124, 246, 0.25);
+}
 
+/* Clear */
+.clear-button {
+  background: #d52424ed;
+  font-weight: 500;
+}
+
+.clear-button:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(213, 36, 36, 0.22);
+}
+
+/* Click feedback */
+.primary-button:active,
+.search-button:active,
+.clear-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Disabled buttons */
+.primary-button:disabled,
+.search-button:disabled,
+.clear-button:disabled,
+.search-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
 /* Leads */
 
 .leads-header {
@@ -459,6 +486,14 @@ select {
   font-weight: 600;
   cursor: pointer;
   outline: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.status-select:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(20, 40, 80, 0.12);
 }
 
 .status-new {
