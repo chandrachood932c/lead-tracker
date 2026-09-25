@@ -17,19 +17,39 @@ const createLead =  async (req, res) =>{
             data: lead
         });
     } catch (error) {
-        console.error('Error creating lead:', error.message);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to create lead',
-            error: error.message
-        });
+        console.error('Error creating lead:', error.message, error);
+        const isDuplicateKeyError = error?.code === 11000;
+        if (isDuplicateKeyError) {
+            const duplicateField = Object.keys(error.keyValue)[0];
+            const duplicateValue = error.keyValue[duplicateField];
+            return res.status(400).json({
+                success: false,
+                message: `${duplicateField} "${duplicateValue}" already exists`
+            });
+        } else {
+            res.status(500).json({
+                success: false,
+                message: 'Failed to create lead',
+                error: error.message
+            });
+        }
     }
 }
 
 const getLeads = async (req, res) => {
     try{
+        const { search } = req.query;
         let query = {};
 
+         if (search) {
+            query = {
+                $or: [
+                    { name: { $regex: search, $options: "i" } },
+                    { email: { $regex: search, $options: "i" } },
+                    { company: { $regex: search, $options: "i" } }
+                ]
+            };
+        }
         const leads = await Lead.find(query).sort({ createdAt: -1 });
 
         res.status(200).json({

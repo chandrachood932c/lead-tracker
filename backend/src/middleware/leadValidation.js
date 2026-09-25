@@ -1,7 +1,7 @@
 const validator = require('validator');
 const mongoose = require("mongoose");
 
-const allowedLeadFields = ['name', 'email', 'phone', 'company']
+const allowedLeadFields = ['name', 'email', 'phone', 'status']
 
 const validateCreateLead = (req, res, next) => {
     
@@ -22,7 +22,7 @@ const validateCreateLead = (req, res, next) => {
     if (invalidFields.length > 0) {
         return res.status(400).json({
         success: false,
-        message: `Unexpected fields: ${invalidFields.join(", ")}`
+        message: `Undefined fields: ${invalidFields.join(", ")}`
         });
     }
 
@@ -71,19 +71,19 @@ const validateCreateLead = (req, res, next) => {
     let phone;
 
     if (body.phone !== undefined) {
-        if (typeof body.phone !== "string") {
+        if (!validator.isNumeric(body.phone)) {
         return res.status(400).json({
             success: false,
-            message: "Phone must be a string"
+            message: "Enter a valid phone number"
         });
         }
 
         phone = body.phone.trim();
 
-        if (phone.length > 20) {
+        if (phone.length > 10) {
         return res.status(400).json({
             success: false,
-            message: "Phone cannot exceed 20 characters"
+            message: "Phone cannot exceed 10 characters"
         });
         }
     }
@@ -116,16 +116,12 @@ const validateLeadStatus = (req, res, next) => {
   if (invalidFields.length > 0) {
     return res.status(400).json({
       success: false,
-      message: `Unexpected fields: ${invalidFields.join(", ")}`
+      message: `Missing fields: ${invalidFields.join(", ")}`
     });
   }
 
   const allowedStatuses = [
-    "New",
-    "Contacted",
-    "Qualified",
-    "Converted",
-    "Lost"
+    'new lead', 'contacted', 'qualified', 'not interested', 'closed won', 'rejected'
   ];
 
   if (

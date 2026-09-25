@@ -20,12 +20,13 @@ const leadScehema = new mongoose.Schema({
         required: [true, 'Phone number is required'],
         trim: true,
         match: [/^\+?[1-9]\d{1,14}$/, 'Phone number is invalid'],
-        maxLength: [15, 'Phone number cannot exceed 15 characters'],
+        maxLength: [10, 'Phone number cannot exceed 10 characters'],
+        unique: true,
     },
     status: {
         type: String,
-        enum: ['new', 'contacted', 'qualified', 'converted', 'lost'],
-        default: 'new',
+        enum: ['new lead', 'contacted', 'qualified', 'not interested', 'closed won', 'rejected'],
+        default: 'new lead',
     },
 },
 {
