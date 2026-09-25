@@ -98,7 +98,7 @@ const LeadListingPage = () => {
                     <button className={search ? "search-button" : "search-button disabled"} onClick={() => search && fetchLeads(search)} disabled={!search}>
                         Search
                     </button>
-                    <button className="clear-button" onClick={() => {
+                    <button className="clear-button" disabled={search === ''} onClick={() => {
                         setSearch('');
                         setError(null);
                         fetchLeads('');
