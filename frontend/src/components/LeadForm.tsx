@@ -20,7 +20,7 @@ const LeadForm = ({onLeadCreated}: LeadFormProps) => {
         name: '',
         email: '',
         phone: '',
-        status: 'New',
+        status: 'New Lead',
     });
     const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -39,7 +39,7 @@ const LeadForm = ({onLeadCreated}: LeadFormProps) => {
             setLoading(true);
             const newLead = await createLead(formData);
             onLeadCreated(newLead);
-            setFormData({name: '', email: '', phone: '', status: 'New'});
+            setFormData({name: '', email: '', phone: '', status: 'New Lead'});
             setIsFormOpen(false);
 
         } catch (error: any) {

@@ -1,8 +1,9 @@
 export type LeadStatus =
-  | "New"
+  | "New Lead"
   | "Contacted"
   | "Qualified"
-  | "Converted"
+  | "Not Interested"
+  | "Closed Won"
   | "Rejected";
 
 export interface Lead {
