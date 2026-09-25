@@ -181,12 +181,13 @@ AI was used for initial suggestions, small code snippets, and review assistance 
 | File / Area | AI Assistance |
 |---|---|
 | `README.md` | Initial documentation structure and setup/deployment checklist |
-| `client/src/components/LeadForm.*` | Form structure, validation suggestions, and UI improvements |
-| `client/src/components/LeadList.*` | Lead listing, search/filtering approach, and empty-state handling |
-| `client/src/components/LeadStatus.*` | Status update flow and validation suggestions |
-| `server/routes/` & `server/controllers/` | API structure and request/response handling suggestions |
-| `server/models/Lead.*` | Lead fields, status values, and validation suggestions |
-| `client/src/styles/*` | UI/UX and responsive styling suggestions |
+| `frontend/src/components/LeadForm.*` | Form structure, validation suggestions, and UI improvements |
+| `frontend/src/pages/LeadListingPage.*` | Lead listing, search/filtering approach, and empty-state handling |
+| `frontend/src/components/Sidebar.*` | Status update flow and validation suggestions |
+| `backend/src/middleware/` | Request validation and input-processing suggestions |
+| `backend/src/routes/` & `backend/src/controllers/` | API structure and request/response handling suggestions |
+| `backend/src/models/Lead.*` | Lead fields, status values, and validation suggestions |
+| `frontend/src/index.css` | UI/UX and responsive styling suggestions |
 | Testing | Test scenarios, edge cases, and validation checklist |
 
 AI-generated suggestions were reviewed and modified before being incorporated into the application.
@@ -199,13 +200,15 @@ The final implementation, integration, configuration, and verification were hand
 
 | File / Area | Manual Work |
 |---|---|
-| `client/src/` | Component integration, application flow, API integration, and UI behaviour |
-| `client/src/components/LeadForm.*` | Final form behaviour, field handling, and validation integration |
-| `client/src/components/LeadList.*` | Final lead display, search behaviour, and state handling |
-| `client/src/components/LeadStatus.*` | Status update interaction and API integration |
-| `server/routes/` & `server/controllers/` | Final API implementation, validation, and error handling |
-| `server/models/Lead.*` | Database model implementation and configuration |
-| `client/src/styles/*` | Final styling, responsive adjustments, and interaction states |
+| `frontend/src/` | Component integration, application flow, API integration, and UI behaviour |
+| `frontend/src/components/LeadForm.*` | Final form behaviour, field handling, and validation integration |
+| `frontend/src/pages/LeadListingPage.*` | Final lead display, search behaviour, and state handling |
+| `frontend/src/services/leadService.*` | Api definitions |
+| `backend/src/routes/leadRoutes.js` | Final route definitions for lead CRUD and status updates |
+| `backend/src/controllers/` | Final API implementation, validation, and error handling |
+| `backend/src/models/Lead.*` | Database model implementation and configuration |
+| `backend/src/middleware/` | Final validation and request handling logic |
+| `frontend/src/App.css` / `frontend/src/index.css` | Final styling, responsive adjustments, and interaction states |
 | `.env` / configuration files | Environment and deployment configuration |
 | Tests / Git | Testing, debugging, verification, and Git commit history |
 | `README.md` / `AGENT.md` | Final documentation and project-specific decisions |
